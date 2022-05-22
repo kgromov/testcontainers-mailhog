@@ -14,9 +14,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-/**
- * @author Niko Köbler, https://www.n-k.de, @dasniko
- */
+
 @Testcontainers
 public class SmtpTest {
 
@@ -34,7 +32,7 @@ public class SmtpTest {
     @BeforeEach
     public void setUp() {
         smtpPort = mailhog.getMappedPort(PORT_SMTP);
-        smtpHost = mailhog.getContainerIpAddress();
+        smtpHost = mailhog.getHost();
         Integer httpPort = mailhog.getMappedPort(PORT_HTTP);
 
         RestAssured.baseURI = "http://" + smtpHost;
